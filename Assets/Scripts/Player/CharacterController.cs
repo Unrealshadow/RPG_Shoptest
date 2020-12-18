@@ -11,6 +11,7 @@ public class CharacterController : MonoBehaviour
     private Vector2 _movementVector;
 
     public float speed = 2f;
+    public GameObject shopPanel;
 
     //Animation states
     private enum AnimationStates
@@ -87,8 +88,10 @@ public class CharacterController : MonoBehaviour
         ChangeAnimationState(AnimationStates.MCIdle);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        shopPanel.SetActive(true);
         
+
     }
 }

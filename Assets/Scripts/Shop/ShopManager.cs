@@ -5,14 +5,14 @@ using TMPro;
 public class ShopManager : MonoBehaviour
 {
     public GameObject blankShopSlot;
-    public GameObject shopPanel;
-
+    public GameObject contentPanel;
+    public GameObject mainShopPanel;
     public ShopInventory shopInventory;
-
-
+    public TextMeshProUGUI money;
     private void Start()
     {
         MakeShopInventorySlots();
+        blankShopSlot.GetComponent<ShopSlot>().CheckIsAvailable();
     }
     private void MakeShopInventorySlots()
     {
@@ -20,8 +20,8 @@ public class ShopManager : MonoBehaviour
         {
             for (int i = 0; i < shopInventory.myShopInventory.Count; i++)
             {
-                var tempSlot = Instantiate(blankShopSlot, shopPanel.transform.position, Quaternion.identity);
-                tempSlot.transform.SetParent(shopPanel.transform, false);
+                var tempSlot = Instantiate(blankShopSlot, contentPanel.transform.position, Quaternion.identity);
+                tempSlot.transform.SetParent(contentPanel.transform, false);
                 ShopSlot newSlot = tempSlot.GetComponent<ShopSlot>();
                 if (tempSlot)
                 {
@@ -31,6 +31,31 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public void OnClickClose()
+    {
+        
+        if(mainShopPanel.activeSelf == true)
+        {
+            mainShopPanel.SetActive(false);
+        }
+            
+    }
 
-    
+    public void DeductMoney(int price)
+    {
+        
+        var tempPrice = int.Parse( money.text.Substring(0, money.text.Length-1));
+        if(tempPrice > 0)
+        {
+            var currentAmount = tempPrice - price;
+            money.text = currentAmount.ToString() + "$";
+        }
+    }
+    public void AddMoney(int price)
+    {
+
+        var tempPrice = int.Parse(money.text.Substring(0, money.text.Length - 1));
+        var currentAmount = tempPrice + price;
+        money.text = currentAmount.ToString() + "$";
+    }
 }
