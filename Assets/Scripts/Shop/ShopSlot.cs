@@ -54,8 +54,18 @@ public class ShopSlot : MonoBehaviour
 
     public void InitialCheck()
     {
-        var masterList = thisManager.shopInventory.myShopInventory;
-        Debug.Log(masterList.Count);
+        var tempList= playerInventory.playerInventoryList;
+        for (int i = 0; i < tempList.Count; i++)
+        {
+            if(tempList[i].isBought == true)
+            {
+                useButton.GetComponent<Button>().interactable = true;
+                buyButton.GetComponent<Button>().interactable = false;
+                sellButton.GetComponent<Button>().interactable = true;
+            }
+
+            
+        }
     }
 
     public void CheckIsAvailable()
@@ -80,25 +90,33 @@ public class ShopSlot : MonoBehaviour
         playerInventory.playerInventoryList.Add(thisItem);
         
         thisManager.DeductMoney(thisItem.price);
+        thisItem.isBought= true;
+
         CheckIsAvailable();
 
     }
 
     public void OnSellClick()
     {
-        playerInventory.playerInventoryList.Remove(thisItem);
-        buyButton.GetComponent<Button>().interactable = true;
-        useButton.GetComponent<Button>().interactable = false;
-        thisManager.AddMoney(int.Parse(price.text.Substring(0,price.text.Length)));
-        sellButton.GetComponent<Button>().interactable = false;
-
-
+        if (playerInventory.playerInventoryList.Contains(thisItem))
+        {
+            thisManager.AddMoney(int.Parse(price.text.Substring(0, price.text.Length)));
+            playerInventory.playerInventoryList.Remove(thisItem);
+            buyButton.GetComponent<Button>().interactable = true;
+            useButton.GetComponent<Button>().interactable = false;
+            sellButton.GetComponent<Button>().interactable = false;
+        }
+       
     }
 
     public void OnClickUse()
     {
-        sellButton.GetComponent<Button>().interactable = false;
+        
+
+
+        sellButton.GetComponent<Button>().interactable = true;
         useButton.GetComponent<Button>().interactable = false;
+        thisItem.isUsing = true;
 
         GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().sprite = thisItem.itemSprite;
     }

@@ -15,3 +15,7 @@ MonoBehaviour:
   myShopInventory:
   - {fileID: 11400000, guid: b8beb94833a788c4ca5d932a3253a7b6, type: 2}
   - {fileID: 11400000, guid: f92e6fff98089ea4abdd4f4fdf0a18be, type: 2}
+  - {fileID: 11400000, guid: 08058f3828c1733408d85c7a68fdf81f, type: 2}
+  - {fileID: 11400000, guid: 1952c57f2e2e30e4cb2804e4e20219d3, type: 2}
+  - {fileID: 11400000, guid: 26f3977f89dadee40bcb760d0c2f9365, type: 2}
+  - {fileID: 11400000, guid: dc3a90921da7a584fbc47d07ecb5e8b1, type: 2}

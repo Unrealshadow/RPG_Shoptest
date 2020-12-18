@@ -28,6 +28,7 @@ public class ShopManager : MonoBehaviour
                     newSlot.Setup(shopInventory.myShopInventory[i],this);
                 }
             }
+            ShopSlot.Singleton.InitialCheck();
         }
     }
 

@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a2f898656526741a014ce556d68ff5, type: 3}
-  m_Name: Player Inventory List
+  m_Script: {fileID: 11500000, guid: 8fbb05a8dc29ff648aef4df3006bbc50, type: 3}
+  m_Name: Buyable Item 4
   m_EditorClassIdentifier: 
-  playerInventoryList: []
+  itemSprite: {fileID: 4304790786426730767, guid: 4d7fdabcee0f3434db6301f893d9c8d7, type: 3}
+  price: 100

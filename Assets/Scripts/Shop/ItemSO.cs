@@ -7,4 +7,6 @@ public class ItemSO : ScriptableObject
 {
     public Sprite itemSprite;
     public int price;
+    public bool isBought;
+    public bool isUsing;
 }
